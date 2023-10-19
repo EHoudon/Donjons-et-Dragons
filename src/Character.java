@@ -3,6 +3,7 @@ public class Character {
     private String type;
     private int life;
     private int attackStrength;
+    private int playerPosition;
 
     public Character() {
     }
@@ -50,5 +51,13 @@ public class Character {
 
     public void setAttackStrength(int attackStrength) {
         this.attackStrength = attackStrength;
+    }
+
+    public int getPlayerPosition() {
+        return playerPosition;
+    }
+
+    public void setPlayerPosition(int playerPosition) {
+        this.playerPosition = playerPosition;
     }
 }

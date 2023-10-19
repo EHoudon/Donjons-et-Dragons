@@ -2,7 +2,8 @@ import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Menu {
-    public void start() {
+    public Character start() {
+//        System.out.println();
         Scanner newCharacter = new Scanner(System.in);
         System.out.print("Taper le nom : ");
         String nomJoueur = newCharacter.nextLine();
@@ -39,11 +40,13 @@ public class Menu {
                 typeJoueur = newCharacter.nextLine();
             }
         }
-        Character JoueurUn = new Character(nomJoueur, typeJoueur, lifeJoueur, attackJoueur);
-        System.out.println("Votre nom : " + JoueurUn.getName());
-        System.out.println("Classe : " + JoueurUn.getType());
-        System.out.println("vie : " + JoueurUn.getLife());
-        System.out.println("attaque : " + JoueurUn.getAttackStrength());
+        Character joueurUn = new Character(nomJoueur, typeJoueur, lifeJoueur, attackJoueur);
+        System.out.println("Votre nom : " + joueurUn.getName());
+        System.out.println("Classe : " + joueurUn.getType());
+        System.out.println("vie : " + joueurUn.getLife());
+        System.out.println("attaque : " + joueurUn.getAttackStrength());
+        return joueurUn;
     }
+
 }
 
