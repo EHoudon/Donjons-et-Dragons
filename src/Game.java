@@ -3,7 +3,7 @@ public class Game {
     int dice;
 
     public Game(Character joueur) {
-        int[] myBoard = new int[64];
+//        int[] myBoard = new int[64];
         joueur.setPlayerPosition(0);
         positionPlayer  = joueur.getPlayerPosition();
         System.out.println("Position de départ : " + positionPlayer);
@@ -17,6 +17,8 @@ public class Game {
             }
             joueur.setPlayerPosition(positionPlayer);
             System.out.println("Position du joueur : " + positionPlayer);
+
+            }
         }
     }
-}
+

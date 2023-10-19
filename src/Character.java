@@ -12,6 +12,17 @@ public class Character {
         this.name = name;
     }
 
+
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", life=" + life +
+                ", attackStrength=" + attackStrength +
+                ", playerPosition=" + playerPosition +
+                '}';
+    }
+
     public Character(String name, String type, int life, int attackStrength) {
         this.name = name;
         this.type = type;

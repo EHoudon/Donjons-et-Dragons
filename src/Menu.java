@@ -41,10 +41,11 @@ public class Menu {
             }
         }
         Character joueurUn = new Character(nomJoueur, typeJoueur, lifeJoueur, attackJoueur);
-        System.out.println("Votre nom : " + joueurUn.getName());
-        System.out.println("Classe : " + joueurUn.getType());
-        System.out.println("vie : " + joueurUn.getLife());
-        System.out.println("attaque : " + joueurUn.getAttackStrength());
+//        System.out.println("Votre nom : " + joueurUn.getName());
+//        System.out.println("Classe : " + joueurUn.getType());
+//        System.out.println("vie : " + joueurUn.getLife());
+//        System.out.println("attaque : " + joueurUn.getAttackStrength());
+        System.out.println(joueurUn);
         return joueurUn;
     }
 
