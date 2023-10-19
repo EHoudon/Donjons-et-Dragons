@@ -3,7 +3,6 @@ public class Main {
         Menu newMenu = new Menu();
         Character joueur = newMenu.start();
         new Game(joueur);
-
     }
 
 }

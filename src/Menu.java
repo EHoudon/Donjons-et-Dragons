@@ -5,28 +5,19 @@ public class Menu {
     public Character start() {
 //        System.out.println();
         Scanner newCharacter = new Scanner(System.in);
+
         System.out.print("Taper le nom : ");
         String nomJoueur = newCharacter.nextLine();
 
         System.out.print("Taper le Type : ");
         String typeJoueur = newCharacter.nextLine();
+
         while (!typeJoueur.equals("Warrior") && !typeJoueur.equals("Wizard")) {
             System.out.println("Veuillez choisir entre 'Warrior' et 'Wizard'");
             System.out.print("Taper le Type : ");
             typeJoueur = newCharacter.nextLine();
         }
-        int lifeJoueur = 0;
-        int attackJoueur = 0;
-        if (typeJoueur.equals("Warrior")) {
-            lifeJoueur = 10;
-            attackJoueur = 10;
-        }
-        if (typeJoueur.equals("Wizard")) {
-            lifeJoueur = 6;
-            attackJoueur = 15;
-        }
-
-
+//
         System.out.print("Voulez vous changer des infos?  [y/n]");
         if (newCharacter.nextLine().equals("y")) {
             System.out.print("Voulez vous changer le nom?  [y/n]");
@@ -40,12 +31,15 @@ public class Menu {
                 typeJoueur = newCharacter.nextLine();
             }
         }
-        Character joueurUn = new Character(nomJoueur, typeJoueur, lifeJoueur, attackJoueur);
-//        System.out.println("Votre nom : " + joueurUn.getName());
-//        System.out.println("Classe : " + joueurUn.getType());
-//        System.out.println("vie : " + joueurUn.getLife());
-//        System.out.println("attaque : " + joueurUn.getAttackStrength());
+        Character joueurUn;
+        if (typeJoueur.equals("Warrior")) {
+            joueurUn = new Warrior(nomJoueur,"Weapon");
+        } else {
+            joueurUn = new Wizard(nomJoueur);
+        }
+
         System.out.println(joueurUn);
+
         return joueurUn;
     }
 

@@ -4,7 +4,7 @@ public class Game {
 
     public Game(Character joueur) {
 //        int[] myBoard = new int[64];
-        joueur.setPlayerPosition(0);
+        joueur.setPlayerPosition(1);
         positionPlayer  = joueur.getPlayerPosition();
         System.out.println("Position de départ : " + positionPlayer);
 
@@ -17,7 +17,7 @@ public class Game {
             }
             joueur.setPlayerPosition(positionPlayer);
             System.out.println("Position du joueur : " + positionPlayer);
-
+            System.out.println(joueur);
             }
         }
     }

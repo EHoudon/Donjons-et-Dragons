@@ -1,11 +1,15 @@
 public class Warrior extends Character {
-
-    public Warrior(String name){
-        super(name,"Warrior",10,10);
+private Object Weapon;
+    public Warrior(String name, Object Weapon){
+        super(name,"Warrior",10,10 );
+        this.Weapon = new Weapon(5,"Hache");
     }
 
+    public Object getWeapon() {
+        return Weapon;
+    }
 
-    public String toString() {
-        return "Warrior{}";
+    public void setWeapon(Object weapon) {
+        Weapon = weapon;
     }
 }

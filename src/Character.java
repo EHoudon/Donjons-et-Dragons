@@ -3,7 +3,7 @@ public class Character {
     private String type;
     private int life;
     private int attackStrength;
-    private int playerPosition;
+    private int playerPosition = 1;
 
     public Character() {
     }
