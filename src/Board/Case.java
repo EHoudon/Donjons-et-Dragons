@@ -1,3 +1,5 @@
+package Board;
+
 public class Case {
     private int caseNumber;
 

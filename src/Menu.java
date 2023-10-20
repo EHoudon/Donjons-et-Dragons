@@ -1,8 +1,45 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
+import Character.Character;
+import Character.Warrior;
+import Character.Wizard;
+import Defensif.Philter;
+import Defensif.Shield;
+import Offensif.Sort;
+import Offensif.Weapon;
+
+
 public class Menu {
-    public Character start() {
+
+    public void displayMenu() {
+        Scanner newMenu = new Scanner(System.in);
+        System.out.println("»»——☠——« DONJONS & DRAGONS »——☠——««");
+        System.out.println("1. New Game");
+        System.out.println("2. Exit Game");
+        System.out.println(("3. Crédits"));
+        String choice = newMenu.nextLine();
+
+        if (choice.equals("1")) {
+            Character joueur = newGame();
+            new Game(joueur);
+        }
+        if (choice.equals("2")) {
+            System.out.println("Chao!");
+        }
+        if (choice.equals("3")) {
+            System.out.println("Created By EH ©");
+            System.out.println("retour au menu? yes(y) no(n)");
+            String retourMenu = newMenu.nextLine();
+                if(retourMenu.equals("y")){
+                    displayMenu();
+                }
+                if (retourMenu.equals("n")){
+                    System.out.println("Chao!");
+                }
+        }
+    }
+
+    public Character newGame() {
 //        System.out.println();
         Scanner newCharacter = new Scanner(System.in);
 
@@ -33,15 +70,22 @@ public class Menu {
         }
         Character joueurUn;
         if (typeJoueur.equals("Warrior")) {
-            joueurUn = new Warrior(nomJoueur,"Weapon");
+            joueurUn = new Warrior(nomJoueur);
+            Weapon Weapon = new Weapon(5, "Hache");
+            joueurUn.setAttackObject(Weapon);
+            Shield Shield = new Shield(6, "Bouclier Rond");
+            joueurUn.setDefenseObject(Shield);
         } else {
             joueurUn = new Wizard(nomJoueur);
+            Sort Sort = new Sort(7, "Eclair de Feu");
+            joueurUn.setAttackObject(Sort);
+            Philter Philter = new Philter(8, "Voile du couard");
+            joueurUn.setDefenseObject(Philter);
         }
 
         System.out.println(joueurUn);
 
         return joueurUn;
     }
-
 }
 

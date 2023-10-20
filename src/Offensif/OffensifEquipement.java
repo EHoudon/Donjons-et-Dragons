@@ -1,4 +1,6 @@
-public class OffensifEquipement {
+package Offensif;
+
+public abstract class OffensifEquipement {
 
     private String TypeWeapon;
     private int attackLevel;
@@ -10,6 +12,13 @@ public class OffensifEquipement {
 
     }
 
+    @Override
+    public String toString() {
+        return "▂▃▅▇█▓▒░ Offensif Equipement ░▒▓█▇▅▃▂" + '\n' +
+                "Type :" + TypeWeapon + '\n' +
+                "attackLevel: " + attackLevel + '\n' +
+                "name: " + name + '\n';
+    }
 
     public String getTypeWeapon() {
         return TypeWeapon;

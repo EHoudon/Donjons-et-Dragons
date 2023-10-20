@@ -1,3 +1,5 @@
+package Defensif;
+
 public class DefensifEquipement {
     private String typeDefense;
     private int levelDefense;
@@ -6,7 +8,14 @@ public class DefensifEquipement {
         this.typeDefense = typeDefense;
         this.levelDefense = levelDefense;
         this.name = name;
+    }
 
+    @Override
+    public String toString() {
+        return"▂▃▅▇█▓▒░ Defensif Equipement ░▒▓█▇▅▃▂" + '\n' +
+                "typeDefense: " + typeDefense + '\n' +
+                "levelDefense: " + levelDefense + '\n' +
+                "name: " + name + '\n';
     }
 
     public String getTypeDefense() {
