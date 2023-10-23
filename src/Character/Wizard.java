@@ -15,4 +15,14 @@ private Object Sort;
     public void setSort(Object sort) {
         Sort = sort;
     }
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
+

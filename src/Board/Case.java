@@ -1,19 +1,19 @@
 package Board;
+import Offensif.Weapon;
 
-public class Case {
-    private int caseNumber;
+import java.util.Enumeration;
+import java.util.ArrayList;
 
+public class  Case {
 
-    public Case(int caseNumber) {
-        this.caseNumber = caseNumber;
+    public Case() {
+
     }
 
-    public int getCaseNumber() {
-        return caseNumber;
+    @Override
+    public String toString() {
+
+        return "case vide";
     }
 
-    public void setCaseNumber(int caseNumber) {
-
-        this.caseNumber = caseNumber;
-    }
 }

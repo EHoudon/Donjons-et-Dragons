@@ -1,8 +1,9 @@
 package Character;
 
+import Board.Case;
 import Offensif.OffensifEquipement;
 
-public abstract class Character {
+public abstract class Character extends Case {
     private String name;
 //    private String type;
     private int life;
@@ -21,24 +22,26 @@ public abstract class Character {
 
 
 
-    public Character(String name,/* String type,*/ int life, int attackStrength) {
+    public Character(String name,int life, int attackStrength) {
         this.name = name;
-//        this.type = type;
         this.life = life;
         this.attackStrength = attackStrength;
 //        this.attackObject = new OffensifEquipement(TypeWeapon, int attackLevel, String name);
     }
+    public abstract String getType();
+
 
     @Override
     public String toString() {
         return "◇─◇──◇────◇ INFOS JOUEUR ◇─────◇──◇─◇" + '\n' +
                 "name: " + name + '\n' +
-//                "type: " + type + '\n' +
+                "type: " + getType() + '\n' +
                 "life: " + life + '\n' +
                 "attackStrength: " + attackStrength + '\n' +
                  attackObject + '\n' +
                  defenseObject+ '\n' ;
     }
+
 
     public Object getAttackObject() {
         return attackObject;

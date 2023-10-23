@@ -1,3 +1,4 @@
+import Board.Board;
 import Character.Character;
 import Exeptions.PersonnageHorsPlateauException;
 
@@ -13,12 +14,13 @@ public class Game {
         joueur.setPlayerPosition(1);
         positionPlayer = joueur.getPlayerPosition();
         System.out.println("Position de départ : " + positionPlayer);
+        new Board();
         while (positionPlayer <= 64 && positionPlayer != 64) {
            try {
                tourDeJeu(joueur);
            } catch(PersonnageHorsPlateauException e) {
                System.out.println("Fin du jeu!");
-               joueur.setPlayerPosition(64);
+
                System.out.println("Position du joueur : " + positionPlayer);
            }
         }
@@ -37,6 +39,7 @@ public class Game {
             System.out.println("lancer de dé : " + dice);
             positionPlayer = positionPlayer + dice;
             if (positionPlayer > 64) {
+                joueur.setPlayerPosition(64);
                 throw new PersonnageHorsPlateauException();
             }
             joueur.setPlayerPosition(positionPlayer);

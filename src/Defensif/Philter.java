@@ -7,7 +7,4 @@ public class Philter extends DefensifEquipement {
         super("Philter", levelDefense, name);
     }
 
-    public String toString() {
-        return "type: Philter" + " " + "defenselevel: " + getLevelDefense() + " " + "nom du bouclier: " + getName();
-    }
 }
