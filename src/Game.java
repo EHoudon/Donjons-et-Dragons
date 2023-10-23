@@ -10,11 +10,12 @@ public class Game {
     int dice;
 
     public Game(Character joueur) {
-//        int[] myBoard = new int[64];
+        Board myBoard = new Board();
+        myBoard.get(1);
+        System.out.println();
         joueur.setPlayerPosition(1);
         positionPlayer = joueur.getPlayerPosition();
         System.out.println("Position de départ : " + positionPlayer);
-        new Board();
         while (positionPlayer <= 64 && positionPlayer != 64) {
            try {
                tourDeJeu(joueur);
