@@ -1,9 +1,8 @@
 package Character;
 
 import Board.Case;
-import Offensif.OffensifEquipement;
 
-public abstract class Character extends Case {
+public abstract class Charactair {
     private String name;
 //    private String type;
     private int life;
@@ -12,17 +11,17 @@ public abstract class Character extends Case {
     private Object attackObject;
     private Object defenseObject;
 
-    public Character() {
+    public Charactair() {
     }
 
-    public Character(String name) {
+    public Charactair(String name) {
         this.name = name;
     }
 
 
 
 
-    public Character(String name,int life, int attackStrength) {
+    public Charactair(String name, int life, int attackStrength) {
         this.name = name;
         this.life = life;
         this.attackStrength = attackStrength;
@@ -61,12 +60,6 @@ public abstract class Character extends Case {
     public void setName(String name) {
         this.name = name;
     }
-//    public String getType() {
-//        return type;
-//    }
-//    public void setType(String type) {
-//            this.type = type;
-//    }
     public int getLife() {
         return life;
     }
@@ -85,4 +78,10 @@ public abstract class Character extends Case {
     public void setPlayerPosition(int playerPosition) {
         this.playerPosition = playerPosition;
     }
+
+//    @Override
+//    public void interaction(Character joueur) {
+//
+//    }
+
 }

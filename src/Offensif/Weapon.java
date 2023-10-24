@@ -1,11 +1,16 @@
 package Offensif;
 
-import Offensif.OffensifEquipement;
+import Board.Case;
+import Character.*;
 
-public class Weapon extends OffensifEquipement {
+public abstract class Weapon extends OffensifEquipement implements Case {
 
 
     public Weapon(int attackLevel, String name) {
         super("Weapon", attackLevel, name);
     }
+
+
+
 }
+

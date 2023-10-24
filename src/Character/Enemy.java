@@ -1,6 +1,6 @@
 package Character;
 
-public class Enemy extends Character{
+public abstract class Enemy extends Charactair {
 
     public Enemy(String name,int life,int attackStrength){
     super(name,life,attackStrength);
@@ -21,4 +21,7 @@ public class Enemy extends Character{
     public String getType() {
         return null;
     }
+
+
+
 }

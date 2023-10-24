@@ -1,6 +1,6 @@
 package Character;
 
-public class Wizard extends Character {
+public class Wizard extends Charactair {
     private String type = "Wizard";
 private Object Sort;
     public Wizard(String name){
@@ -24,5 +24,8 @@ private Object Sort;
     public void setType(String type) {
         this.type = type;
     }
+
+
+
 }
 

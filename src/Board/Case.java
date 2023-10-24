@@ -1,19 +1,10 @@
 package Board;
-import Offensif.Weapon;
+import Character.*;
+import Offensif.OffensifEquipement;
 
-import java.util.Enumeration;
-import java.util.ArrayList;
+public interface Case {
 
-public class  Case {
-
-    public Case() {
-
-    }
-
-    @Override
-    public String toString() {
-
-        return "case vide";
-    }
+void interaction(Charactair joueur);
 
 }
+

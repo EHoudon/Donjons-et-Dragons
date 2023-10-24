@@ -1,6 +1,6 @@
 package Character;
 
-public class Warrior extends Character {
+public class Warrior extends Charactair {
     private String type = "Warrior";
     private Object Weapon;
 
@@ -27,4 +27,6 @@ public class Warrior extends Character {
     public void setType(String type) {
         this.type = type;
     }
+
+
 }

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import Character.Character;
+import Character.Charactair;
 import Character.Warrior;
 import Character.Wizard;
 import Defensif.Philter;
@@ -20,7 +20,7 @@ public class Menu {
         String choice = newMenu.nextLine();
 
         if (choice.equals("1")) {
-            Character joueur = newGame();
+            Charactair joueur = newGame();
             new Game(joueur);
         }
         if (choice.equals("2")) {
@@ -39,7 +39,7 @@ public class Menu {
         }
     }
 
-    public Character newGame() {
+    public Charactair newGame() {
 //        System.out.println();
         Scanner newCharacter = new Scanner(System.in);
 
@@ -68,19 +68,19 @@ public class Menu {
                 typeJoueur = newCharacter.nextLine();
             }
         }
-        Character joueurUn;
+        Charactair joueurUn;
         if (typeJoueur.equals("Warrior")) {
             joueurUn = new Warrior(nomJoueur);
-            Weapon Weapon = new Weapon(5, "Hache");
-            joueurUn.setAttackObject(Weapon);
-            Shield Shield = new Shield(6, "Bouclier Rond");
-            joueurUn.setDefenseObject(Shield);
+//            Weapon Weapon = new Weapon(5, "Hache");
+//            joueurUn.setAttackObject(Weapon);
+//            Shield Shield = new Shield(6, "Bouclier Rond");
+//            joueurUn.setDefenseObject(Shield);
         } else {
             joueurUn = new Wizard(nomJoueur);
-            Sort Sort = new Sort(7, "Eclair de Feu");
-            joueurUn.setAttackObject(Sort);
-            Philter Philter = new Philter(8, "Voile du couard");
-            joueurUn.setDefenseObject(Philter);
+//            Sort Sort = new Sort(7, "Eclair de Feu");
+//            joueurUn.setAttackObject(Sort);
+//            Philter Philter = new Philter(8, "Voile du couard");
+//            joueurUn.setDefenseObject(Philter);
         }
 
         System.out.println(joueurUn);

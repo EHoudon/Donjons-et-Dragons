@@ -7,18 +7,20 @@ import Character.Goblin;
 import Potions.BigPotion;
 import Potions.NormalPotion;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board {
     int[] myBoard;
 
+    private ArrayList<Case> al = new ArrayList<Case>();
 
     public Board() {
-        ArrayList<Case> al = new ArrayList<Case>();
 
-        for(int i = 0; i< 64; i++){
-            Case a  = new Case();
+
+        for (int i = 0; i < 64; i++) {
+            Casevide a = new Casevide();
             al.add(a);
 
         }
@@ -79,24 +81,17 @@ public class Board {
 
         al.add(43, new BigPotion(10));
         al.add(43, new BigPotion(10));
+    }
 
+    public void getTypeCase(int position) {
+        System.out.println("Case " + position + " = " + al.get(position));
+    }
 
-//        public void posBoard(){
-//                System.out.println(al.get());
-//    }
-
-
-//        for(int i =0 ; i < 64; i++)
-//        {
-//            System.out.println("Case " + i + " = " + al.get(i));
-//        }
-
-//        int position1 = al.indexOf(13);
+    public ArrayList<Case> getAl() {
+        return al;
     }
 
 
-    public void get(int i) {
-    }
 }
 
 

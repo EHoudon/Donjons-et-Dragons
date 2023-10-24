@@ -1,6 +1,8 @@
 package Character;
 
-public class Goblin extends Enemy {
+import Board.Case;
+
+public class Goblin extends Enemy implements Case {
     private String type = "Dragon";
 
     public Goblin(){
@@ -14,5 +16,11 @@ public class Goblin extends Enemy {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public void interaction(Charactair joueur) {
+
+
     }
 }

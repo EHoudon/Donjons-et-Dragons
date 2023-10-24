@@ -2,7 +2,7 @@ package Offensif;
 
 import Board.Case;
 
-public abstract class OffensifEquipement extends Case {
+public abstract class OffensifEquipement implements Case {
 
     private String TypeWeapon;
     private int attackLevel;
