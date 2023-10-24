@@ -1,32 +1,60 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
+import Character.Character;
+import Character.Warrior;
+import Character.Wizard;
+import Defensif.Philter;
+import Defensif.Shield;
+import Offensif.Sort;
+import Offensif.Weapon;
+
+
 public class Menu {
-    public Character start() {
+
+    public void displayMenu() {
+        Scanner newMenu = new Scanner(System.in);
+        System.out.println("»»——☠——« DONJONS & DRAGONS »——☠——««");
+        System.out.println("1. New Game");
+        System.out.println("2. Exit Game");
+        System.out.println(("3. Crédits"));
+        String choice = newMenu.nextLine();
+
+        if (choice.equals("1")) {
+            Character joueur = newGame();
+            new Game(joueur);
+        }
+        if (choice.equals("2")) {
+            System.out.println("Chao!");
+        }
+        if (choice.equals("3")) {
+            System.out.println("Created By EH ©");
+            System.out.println("retour au menu? yes(y) no(n)");
+            String retourMenu = newMenu.nextLine();
+                if(retourMenu.equals("y")){
+                    displayMenu();
+                }
+                if (retourMenu.equals("n")){
+                    System.out.println("Chao!");
+                }
+        }
+    }
+
+    public Character newGame() {
 //        System.out.println();
         Scanner newCharacter = new Scanner(System.in);
+
         System.out.print("Taper le nom : ");
         String nomJoueur = newCharacter.nextLine();
 
         System.out.print("Taper le Type : ");
         String typeJoueur = newCharacter.nextLine();
+
         while (!typeJoueur.equals("Warrior") && !typeJoueur.equals("Wizard")) {
             System.out.println("Veuillez choisir entre 'Warrior' et 'Wizard'");
             System.out.print("Taper le Type : ");
             typeJoueur = newCharacter.nextLine();
         }
-        int lifeJoueur = 0;
-        int attackJoueur = 0;
-        if (typeJoueur.equals("Warrior")) {
-            lifeJoueur = 10;
-            attackJoueur = 10;
-        }
-        if (typeJoueur.equals("Wizard")) {
-            lifeJoueur = 6;
-            attackJoueur = 15;
-        }
-
-
+//
         System.out.print("Voulez vous changer des infos?  [y/n]");
         if (newCharacter.nextLine().equals("y")) {
             System.out.print("Voulez vous changer le nom?  [y/n]");
@@ -40,13 +68,24 @@ public class Menu {
                 typeJoueur = newCharacter.nextLine();
             }
         }
-        Character joueurUn = new Character(nomJoueur, typeJoueur, lifeJoueur, attackJoueur);
-        System.out.println("Votre nom : " + joueurUn.getName());
-        System.out.println("Classe : " + joueurUn.getType());
-        System.out.println("vie : " + joueurUn.getLife());
-        System.out.println("attaque : " + joueurUn.getAttackStrength());
+        Character joueurUn;
+        if (typeJoueur.equals("Warrior")) {
+            joueurUn = new Warrior(nomJoueur);
+            Weapon Weapon = new Weapon(5, "Hache");
+            joueurUn.setAttackObject(Weapon);
+            Shield Shield = new Shield(6, "Bouclier Rond");
+            joueurUn.setDefenseObject(Shield);
+        } else {
+            joueurUn = new Wizard(nomJoueur);
+            Sort Sort = new Sort(7, "Eclair de Feu");
+            joueurUn.setAttackObject(Sort);
+            Philter Philter = new Philter(8, "Voile du couard");
+            joueurUn.setDefenseObject(Philter);
+        }
+
+        System.out.println(joueurUn);
+
         return joueurUn;
     }
-
 }
 
