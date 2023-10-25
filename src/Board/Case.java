@@ -1,6 +1,5 @@
 package Board;
-import Character.*;
-import Offensif.OffensifEquipement;
+import Personnage.*;
 
 public interface Case {
 

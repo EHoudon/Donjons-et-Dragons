@@ -1,12 +1,7 @@
 package Offensif;
-import Character.*;
+import Personnage.*;
 public class Sword extends Weapon{
     public Sword() {
         super(6,"Sword");
-    }
-
-    @Override
-    public void interaction(Charactair joueur) {
-
     }
 }

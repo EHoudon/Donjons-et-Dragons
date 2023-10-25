@@ -1,5 +1,5 @@
 import Board.Board;
-import Character.*;
+import Personnage.*;
 import Exeptions.PersonnageHorsPlateauException;
 
 import java.util.Scanner;

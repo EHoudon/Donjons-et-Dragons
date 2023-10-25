@@ -1,15 +1,17 @@
-package Character;
+package Personnage;
 
-import Board.Case;
+import Defensif.DefensifEquipement;
+import Offensif.OffensifEquipement;
 
 public abstract class Charactair {
     private String name;
 //    private String type;
     private int life;
+    private int MaxLife = 15;
     private int attackStrength;
     private int playerPosition;
-    private Object attackObject;
-    private Object defenseObject;
+    private OffensifEquipement attackObject;
+    private DefensifEquipement defenseObject;
 
     public Charactair() {
     }
@@ -42,16 +44,16 @@ public abstract class Charactair {
     }
 
 
-    public Object getAttackObject() {
+    public OffensifEquipement getAttackObject() {
         return attackObject;
     }
-    public void setAttackObject(Object attackObject) {
+    public void setAttackObject(OffensifEquipement attackObject) {
         this.attackObject = attackObject;
     }
-    public Object getDefenseObject() {
+    public DefensifEquipement getDefenseObject() {
         return defenseObject;
     }
-    public void setDefenseObject(Object defenseObject) {
+    public void setDefenseObject(DefensifEquipement defenseObject) {
         this.defenseObject = defenseObject;
     }
     public String getName() {
@@ -78,10 +80,10 @@ public abstract class Charactair {
     public void setPlayerPosition(int playerPosition) {
         this.playerPosition = playerPosition;
     }
-
-//    @Override
-//    public void interaction(Character joueur) {
-//
-//    }
-
+    public int getMaxLife() {
+        return MaxLife;
+    }
+    public void setMaxLife(int maxLife) {
+        MaxLife = maxLife;
+    }
 }

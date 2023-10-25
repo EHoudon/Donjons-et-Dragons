@@ -1,4 +1,4 @@
-package Character;
+package Personnage;
 
 public class Wizard extends Charactair {
     private String type = "Wizard";

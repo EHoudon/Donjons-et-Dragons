@@ -1,12 +1,10 @@
 import java.util.Scanner;
 
-import Character.Charactair;
-import Character.Warrior;
-import Character.Wizard;
+import Personnage.Charactair;
+import Personnage.Warrior;
+import Personnage.Wizard;
 import Defensif.Philter;
 import Defensif.Shield;
-import Offensif.Sort;
-import Offensif.Weapon;
 
 
 public class Menu {
@@ -73,14 +71,14 @@ public class Menu {
             joueurUn = new Warrior(nomJoueur);
 //            Weapon Weapon = new Weapon(5, "Hache");
 //            joueurUn.setAttackObject(Weapon);
-//            Shield Shield = new Shield(6, "Bouclier Rond");
-//            joueurUn.setDefenseObject(Shield);
+            Shield Shield = new Shield(6, "Bouclier Rond");
+            joueurUn.setDefenseObject(Shield);
         } else {
             joueurUn = new Wizard(nomJoueur);
-//            Sort Sort = new Sort(7, "Eclair de Feu");
+//            Sort Sort = new Flash();
 //            joueurUn.setAttackObject(Sort);
-//            Philter Philter = new Philter(8, "Voile du couard");
-//            joueurUn.setDefenseObject(Philter);
+            Philter Philter = new Philter(8, "Voile du couard");
+            joueurUn.setDefenseObject(Philter);
         }
 
         System.out.println(joueurUn);

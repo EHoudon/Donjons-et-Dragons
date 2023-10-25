@@ -1,8 +1,8 @@
-package Character;
+package Personnage;
 
 import Board.Case;
 
-public class Sorcerer extends Enemy implements Case {
+public class Sorcerer extends Enemy {
     private String type = "Dragon";
 
     public Sorcerer(){
@@ -18,9 +18,5 @@ public class Sorcerer extends Enemy implements Case {
         this.type = type;
     }
 
-    @Override
-    public void interaction(Charactair joueur) {
 
-
-    }
 }

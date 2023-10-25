@@ -1,6 +1,8 @@
-package Character;
+package Personnage;
 
-public abstract class Enemy extends Charactair {
+import Board.Case;
+
+public abstract class Enemy extends Charactair implements Case {
 
     public Enemy(String name,int life,int attackStrength){
     super(name,life,attackStrength);
@@ -22,6 +24,10 @@ public abstract class Enemy extends Charactair {
         return null;
     }
 
+    @Override
+    public void interaction(Charactair joueur) {
 
+
+    }
 
 }

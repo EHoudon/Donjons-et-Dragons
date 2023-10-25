@@ -1,6 +1,6 @@
 package Board;
 
-import Character.*;
+import Personnage.*;
 public class Casevide implements Case {
 
     @Override

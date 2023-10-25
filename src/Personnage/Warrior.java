@@ -1,4 +1,4 @@
-package Character;
+package Personnage;
 
 public class Warrior extends Charactair {
     private String type = "Warrior";
@@ -27,6 +27,5 @@ public class Warrior extends Charactair {
     public void setType(String type) {
         this.type = type;
     }
-
 
 }

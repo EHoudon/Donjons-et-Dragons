@@ -1,99 +1,69 @@
 package Board;
 
 import Offensif.*;
-import Character.Dragon;
-import Character.Sorcerer;
-import Character.Goblin;
+import Personnage.Dragon;
+import Personnage.Sorcerer;
+import Personnage.Goblin;
 import Potions.BigPotion;
 import Potions.NormalPotion;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Map;
 
 public class Board {
     int[] myBoard;
 
     private ArrayList<Case> al = new ArrayList<Case>();
 
+    public ArrayList<Case> getAl() {
+        return al;
+    }
+
     public Board() {
 
 
-        for (int i = 0; i < 64; i++) {
+        for (int index = 0; index < 64; index++) {
             Casevide a = new Casevide();
-            al.add(a);
+
+            switch (index) {
+                case 45, 52, 56, 62:
+                    al.add(new Dragon());
+                case 10, 20, 25, 32, 35, 36, 37, 40, 44, 47:
+                    al.add(new Sorcerer());
+                case 3, 6, 9, 12, 15, 18, 21, 24, 27, 30:
+                    al.add(new Goblin());
+                case 2, 11, 5, 22, 38:
+                    al.add(new Club());
+                case 19, 26, 42, 53:
+                    al.add(new Sword());
+                case 1, 4, 8, 17, 23:
+                    al.add(new Flash());
+                case 48, 49:
+                    al.add(new FireBall());
+                case 7, 13, 31, 33, 39, 43:
+                    al.add(new NormalPotion(5));
+                case 28, 41:
+                    al.add(new BigPotion(10));
+                default:
+                    al.add(a);
+            }
 
         }
 
-        al.add(45, new Dragon());
-        al.add(52, new Dragon());
-        al.add(56, new Dragon());
-        al.add(62, new Dragon());
+//        public void getTypeCase ( int position){
+//            System.out.println("Case " + position + " = " + al.get(position));
+//        }
 
-        al.add(10, new Sorcerer());
-        al.add(20, new Sorcerer());
-        al.add(25, new Sorcerer());
-        al.add(32, new Sorcerer());
-        al.add(35, new Sorcerer());
-        al.add(36, new Sorcerer());
-        al.add(37, new Sorcerer());
-        al.add(40, new Sorcerer());
-        al.add(44, new Sorcerer());
-        al.add(47, new Sorcerer());
-
-        al.add(3, new Goblin());
-        al.add(6, new Goblin());
-        al.add(9, new Goblin());
-        al.add(12, new Goblin());
-        al.add(15, new Goblin());
-        al.add(18, new Goblin());
-        al.add(21, new Goblin());
-        al.add(24, new Goblin());
-        al.add(27, new Goblin());
-        al.add(30, new Goblin());
-
-        al.add(2, new Club());
-        al.add(11, new Club());
-        al.add(5, new Club());
-        al.add(22, new Club());
-        al.add(38, new Club());
-
-        al.add(19, new Sword());
-        al.add(26, new Sword());
-        al.add(42, new Sword());
-        al.add(53, new Sword());
-
-        al.add(1, new Flash());
-        al.add(4, new Flash());
-        al.add(8, new Flash());
-        al.add(17, new Flash());
-        al.add(23, new Flash());
-
-        al.add(48, new FireBall());
-        al.add(49, new FireBall());
-
-        al.add(7, new NormalPotion(5));
-        al.add(13, new NormalPotion(5));
-        al.add(31, new NormalPotion(5));
-        al.add(33, new NormalPotion(5));
-        al.add(39, new NormalPotion(5));
-        al.add(43, new NormalPotion(5));
-
-        al.add(43, new BigPotion(10));
-        al.add(43, new BigPotion(10));
+//        public ArrayList<Case> getAl () {
+//            return al;
+//        }
     }
 
     public void getTypeCase(int position) {
         System.out.println("Case " + position + " = " + al.get(position));
     }
-
-    public ArrayList<Case> getAl() {
-        return al;
-    }
-
-
 }
-
 
 
 
