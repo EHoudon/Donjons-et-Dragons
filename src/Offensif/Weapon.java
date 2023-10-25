@@ -1,7 +1,7 @@
 package Offensif;
 
 import Board.Case;
-import Personnage.Charactair;
+import Personnage.Personnage;
 import Personnage.Warrior;
 
 import java.util.Scanner;
@@ -14,7 +14,7 @@ public abstract class Weapon extends OffensifEquipement implements Case {
     }
 
     @Override
-    public void interaction(Charactair joueur) {
+    public void interaction(Personnage joueur) {
         if (joueur instanceof Warrior) {
             Scanner newCharacter = new Scanner(System.in);
             System.out.print("Voulez vous prendre l'arme? [y/n]");

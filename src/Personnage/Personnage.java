@@ -3,27 +3,27 @@ package Personnage;
 import Defensif.DefensifEquipement;
 import Offensif.OffensifEquipement;
 
-public abstract class Charactair {
+public abstract class Personnage {
     private String name;
 //    private String type;
     private int life;
-    private int MaxLife = 15;
+    private int MaxLife = 10;
     private int attackStrength;
     private int playerPosition;
     private OffensifEquipement attackObject;
     private DefensifEquipement defenseObject;
 
-    public Charactair() {
+    public Personnage() {
     }
 
-    public Charactair(String name) {
+    public Personnage(String name) {
         this.name = name;
     }
 
 
 
 
-    public Charactair(String name, int life, int attackStrength) {
+    public Personnage(String name, int life, int attackStrength) {
         this.name = name;
         this.life = life;
         this.attackStrength = attackStrength;

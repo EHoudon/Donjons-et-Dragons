@@ -6,7 +6,7 @@ public class Goblin extends Enemy {
     private String type = "Dragon";
 
     public Goblin(){
-        super("Goblin",2,2);
+        super("Goblin",6,1);
     }
 
     @Override

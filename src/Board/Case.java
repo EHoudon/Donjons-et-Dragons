@@ -3,7 +3,7 @@ import Personnage.*;
 
 public interface Case {
 
-void interaction(Charactair joueur);
+void interaction(Personnage joueur);
 
 }
 

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import Personnage.Charactair;
+import Personnage.Personnage;
 import Personnage.Warrior;
 import Personnage.Wizard;
 import Defensif.Philter;
@@ -18,8 +18,9 @@ public class Menu {
         String choice = newMenu.nextLine();
 
         if (choice.equals("1")) {
-            Charactair joueur = newGame();
-            new Game(joueur);
+            Personnage joueur = newPlayer();
+            Game game = new Game(joueur);
+            game.start();
         }
         if (choice.equals("2")) {
             System.out.println("Chao!");
@@ -37,7 +38,7 @@ public class Menu {
         }
     }
 
-    public Charactair newGame() {
+    public Personnage newPlayer() {
 //        System.out.println();
         Scanner newCharacter = new Scanner(System.in);
 
@@ -66,7 +67,7 @@ public class Menu {
                 typeJoueur = newCharacter.nextLine();
             }
         }
-        Charactair joueurUn;
+        Personnage joueurUn;
         if (typeJoueur.equals("Warrior")) {
             joueurUn = new Warrior(nomJoueur);
 //            Weapon Weapon = new Weapon(5, "Hache");

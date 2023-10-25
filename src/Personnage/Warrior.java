@@ -1,11 +1,11 @@
 package Personnage;
 
-public class Warrior extends Charactair {
+public class Warrior extends Personnage {
     private String type = "Warrior";
     private Object Weapon;
 
     public Warrior(String name) {
-        super(name, 10, 10);
+        super(name, 5, 5);
 //        type = "Warrior";
 //        this.Weapon = new Weapon(5,"Hache");
     }

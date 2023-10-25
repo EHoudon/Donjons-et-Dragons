@@ -5,6 +5,6 @@ import Personnage.*;
 
 public class Club extends Weapon {
     public Club() {
-        super(7, "Club");
+        super(3, "Club");
     }
 }

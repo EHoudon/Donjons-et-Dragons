@@ -9,7 +9,7 @@ public class Casevide implements Case {
     }
 
     @Override
-    public void interaction(Charactair joueur) {
+    public void interaction(Personnage joueur) {
 
 
     }

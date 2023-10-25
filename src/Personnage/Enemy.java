@@ -2,7 +2,7 @@ package Personnage;
 
 import Board.Case;
 
-public abstract class Enemy extends Charactair implements Case {
+public abstract class Enemy extends Personnage implements Case {
 
     public Enemy(String name,int life,int attackStrength){
     super(name,life,attackStrength);
@@ -25,7 +25,7 @@ public abstract class Enemy extends Charactair implements Case {
     }
 
     @Override
-    public void interaction(Charactair joueur) {
+    public void interaction(Personnage joueur) {
 
 
     }

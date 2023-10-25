@@ -20,7 +20,7 @@ public class Potion implements Case {
     }
 
     @Override
-    public void interaction(Charactair joueur) {
+    public void interaction(Personnage joueur) {
         joueur.setLife(joueur.getLife() + Hp);
         if (joueur.getLife() > joueur.getMaxLife()) {
             joueur.setLife(joueur.getMaxLife());

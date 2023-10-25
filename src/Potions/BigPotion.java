@@ -1,7 +1,7 @@
 package Potions;
 
 public class BigPotion extends Potion{
-    public BigPotion(int Hp) {
-        super("Grande Potion", Hp);
+    public BigPotion() {
+        super("Grande Potion", 5);
     }
 }

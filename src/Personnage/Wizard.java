@@ -1,10 +1,10 @@
 package Personnage;
 
-public class Wizard extends Charactair {
+public class Wizard extends Personnage {
     private String type = "Wizard";
 private Object Sort;
     public Wizard(String name){
-        super(name,6,15);
+        super(name,3,8);
 
     }
 
