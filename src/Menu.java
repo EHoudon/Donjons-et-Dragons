@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import Exeptions.PersonnageHorsPlateauException;
 import Personnage.Personnage;
 import Personnage.Warrior;
 import Personnage.Wizard;
