@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Board {
-    int[] myBoard;
     private ArrayList<Case> al = new ArrayList<Case>();
+
     public ArrayList<Case> getAl() {
         return al;
     }
@@ -38,6 +38,10 @@ public class Board {
     }
     public void getTypeCase(int position) {
         System.out.println("Case " + position + " = " + al.get(position));
+    }
+
+    public void setAl(ArrayList<Case> al) {
+        this.al = al;
     }
 }
 

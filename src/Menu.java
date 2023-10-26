@@ -21,7 +21,7 @@ public class Menu {
         if (choice.equals("1")) {
             Personnage joueur = newPlayer();
             Game game = new Game(joueur);
-            game.start();
+                game.start();
         }
         if (choice.equals("2")) {
             System.out.println("Chao!");
@@ -30,12 +30,12 @@ public class Menu {
             System.out.println("Created By EH ©");
             System.out.println("retour au menu? yes(y) no(n)");
             String retourMenu = newMenu.nextLine();
-                if(retourMenu.equals("y")){
-                    displayMenu();
-                }
-                if (retourMenu.equals("n")){
-                    System.out.println("Chao!");
-                }
+            if (retourMenu.equals("y")) {
+                displayMenu();
+            }
+            if (retourMenu.equals("n")) {
+                System.out.println("Chao!");
+            }
         }
     }
 

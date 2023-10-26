@@ -2,10 +2,10 @@ import Board.Board;
 import Personnage.*;
 import Exeptions.PersonnageHorsPlateauException;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Game {
-    private int positionPlayer;
     private int dice;
     private final Personnage gameJoueur;
     private final Board myBoard;
@@ -17,29 +17,15 @@ public class Game {
 
     public void start() {
         debutPartie();
-        while (isFinPartie(gameJoueur)) {
+        while (gameJoueur.getPlayerPosition() < 64) {
             choixJoueur(getGameJoueur());
         }
+        finDePartie();
     }
 
     private void debutPartie() {
-        gameJoueur.setPlayerPosition(0);
+        gameJoueur.setPlayerPosition(1);
         System.out.println("Position de départ : " + gameJoueur.getPlayerPosition());
-    }
-
-    private void tourDeJeu(Personnage joueur) {
-        throwDice();
-        System.out.println("lancer de dé : " + dice);
-        joueur.setPlayerPosition(gameJoueur.getPlayerPosition() + dice);
-        myBoard.getTypeCase(gameJoueur.getPlayerPosition());
-        myBoard.getAl().get(gameJoueur.getPlayerPosition()).interaction(gameJoueur);
-    }
-
-    private boolean isFinPartie(Personnage joueur) {
-        if (gameJoueur.getPlayerPosition() > 64) {
-            joueur.setPlayerPosition(64);
-        }
-        return true;
     }
 
     public Personnage getGameJoueur() {
@@ -61,54 +47,47 @@ public class Game {
         }
     }
 
+    private void tourDeJeu(Personnage joueur) {
+        throwDice();
+        System.out.println("lancer de dé : " + dice);
+        joueur.setPlayerPosition(gameJoueur.getPlayerPosition() + dice);
+        try {
+            controle();
+        } catch (PersonnageHorsPlateauException e) {
+            System.out.println("fin de partie, vous avez gagné !!");
+            return;
+        }
+        myBoard.getTypeCase(gameJoueur.getPlayerPosition());
+        myBoard.getAl().get(gameJoueur.getPlayerPosition()).interaction(gameJoueur);
+    }
+
+    private void finDePartie() {
+        System.out.println("retour au menu (1) Statistiques de la partie (2) Quitter le jeu (3)");
+        Scanner tour = new Scanner(System.in);
+        String choice = tour.nextLine();
+        if (choice.equals("1")) {
+            Menu menu = new Menu();
+            menu.displayMenu();
+        } else if (choice.equals("2")) {
+            System.out.println("Not implemented, veuillez consulter la road map");
+            finDePartie();
+        } else if (choice.equals("3")) {
+            System.out.println("Chao!");
+        } else {
+            System.out.println("veuillez choisir (1), (2) ou (3)");
+            finDePartie();
+        }
+    }
+
     private void throwDice() {
         dice = (int) (Math.random() * 5 + 1);
     }
 
+    public void controle() throws PersonnageHorsPlateauException {
+        if (gameJoueur.getPlayerPosition() >= 64)
+            throw new PersonnageHorsPlateauException();
+    }
 
-//    public void start() {
-//        gameJoueur.setPlayerPosition(0);
-//        System.out.println("Position de départ : " + gameJoueur.getPlayerPosition());
-//        while (gameJoueur.getPlayerPosition() <= 64 && gameJoueur.getPlayerPosition() != 64) {
-//            try {
-//                tourDeJeu(gameJoueur);
-//                myBoard.getTypeCase(gameJoueur.getPlayerPosition());
-//                myBoard.getAl().get(gameJoueur.getPlayerPosition()).interaction(gameJoueur);
-//
-//            } catch (PersonnageHorsPlateauException e) {
-//                System.out.println("Position du joueur : " + gameJoueur.getPlayerPosition());
-////                Scanner tour = new Scanner(System.in);
-//                System.out.println("Fin du jeu! Vous avez gagné!");
-////                System.out.println("retour au menu? [y/n]");
-////                String choice = tour.nextLine();
-////                if (choice.equals("y")){
-////                    new Menu();
-//            }
-//
-//        }
-//    }
-//
-//
-//    private void tourDeJeu(Personnage joueur) throws PersonnageHorsPlateauException {
-//        Scanner tour = new Scanner(System.in);
-//        System.out.println(("Avancer (1)  Mes Stats (2)"));
-//        String choice = tour.nextLine();
-//        if (choice.equals("1")) {
-//            throwDice();
-//            System.out.println("lancer de dé : " + dice);
-//            joueur.setPlayerPosition(gameJoueur.getPlayerPosition() + dice);
-//            if (gameJoueur.getPlayerPosition() > 64) {
-//                joueur.setPlayerPosition(64);
-//                throw new PersonnageHorsPlateauException();
-//            }
-//            joueur.setPlayerPosition(gameJoueur.getPlayerPosition());
-//            System.out.println("Position du joueur : " + gameJoueur.getPlayerPosition());
-//        }
-//        if (choice.equals("2")) {
-//            System.out.println(joueur);
-//            tourDeJeu(joueur);
-//        }
-//    }
 }
 
 
