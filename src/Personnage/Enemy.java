@@ -2,11 +2,14 @@ package Personnage;
 
 import Board.Case;
 
-public abstract class Enemy extends Personnage implements Case {
+import java.awt.*;
+import java.util.Scanner;
 
-    public Enemy(String name,int life,int attackStrength){
-    super(name,life,attackStrength);
-}
+public abstract class Enemy extends Personnage implements Case {
+    //Personnage joueur;
+    public Enemy(String name, int life, int attackStrength) {
+        super(name, life, attackStrength);
+    }
 
     @Override
     public String toString() {
@@ -25,9 +28,58 @@ public abstract class Enemy extends Personnage implements Case {
     }
 
     @Override
-    public void interaction(Personnage joueur) {
+    public int interaction(Personnage joueur) {
+        System.out.println("Horreur! un " + this.getName());
+        Scanner tour = new Scanner(System.in);
+        while (this.getLife() > 0 && joueur.getLife() > 0) {
+            System.out.println(("Attaquer (1)  Fuir! (2)"));
+            String choice = tour.nextLine();
+            switch (choice) {
+                case "1":
+                    tourCombatAttaqueJoueur(joueur);
+                    if (this.getLife() > 0) {
+                        tourCombatAttaqueEnemy(joueur);
+                    } else {
+                        System.out.println("Vous avez vaincu le " + this.getName());
+                        return 1;
+                    }
+                    break;
+                case "2":
+                    int dice = (int) (Math.random() * 5 + 1);
+                    int posJoueur = joueur.getPlayerPosition();
+                    if (posJoueur - dice < 0) {
+                        joueur.setPlayerPosition(0);
+                    }
+                    if (posJoueur - dice > 0) {
+                        joueur.setPlayerPosition(posJoueur - dice);
+                    }
+                    return 3;
 
+                default:
+                    System.out.println("veuillez choisir (1) ou (2)");
+                    interaction(joueur);
+            }
 
+        }
+        return 2;
     }
+
+    public void tourCombatAttaqueJoueur(Personnage joueur) {
+        System.out.println("vie du " + this.getName() + " : " + this.getLife());
+        System.out.println("Ma puissance d'attaque: " + joueur.getAttackStrength());
+        this.setLife(this.getLife() - joueur.getAttackStrength());
+        if (this.getLife() <= 0) {
+            this.setLife(0);
+        }
+        System.out.println(" Maj vie du " + this.getName() + " : " + this.getLife());
+    }
+
+    public void tourCombatAttaqueEnemy(Personnage joueur) {
+        System.out.println("Ma vie: " + joueur.getLife());
+        System.out.println("Puissance d'attaque du " + this.getName() + " : " + this.getAttackStrength());
+        joueur.setLife(joueur.getLife() - this.getAttackStrength());
+        System.out.println("Maj Ma vie: " + joueur.getLife());
+    }
+
 
 }

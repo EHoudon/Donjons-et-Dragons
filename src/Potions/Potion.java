@@ -7,7 +7,6 @@ public class Potion implements Case {
     private int Hp;
     private String name;
 
-    private Board myBoard;
 
     public Potion(String name, int Hp) {
         this.name = name;
@@ -22,12 +21,21 @@ public class Potion implements Case {
                 '}';
     }
 
+    public int getHp() {
+        return Hp;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
-    public void interaction(Personnage joueur) {
+    public int interaction(Personnage joueur) {
         joueur.setLife(joueur.getLife() + Hp);
         if (joueur.getLife() > joueur.getMaxLife()) {
             joueur.setLife(joueur.getMaxLife());
         }
-        Casevide casevide = new Casevide();
+        return 1;
+
     }
 }

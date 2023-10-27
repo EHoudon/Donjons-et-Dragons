@@ -71,14 +71,10 @@ public class Menu {
         Personnage joueurUn;
         if (typeJoueur.equals("Warrior")) {
             joueurUn = new Warrior(nomJoueur);
-//            Weapon Weapon = new Weapon(5, "Hache");
-//            joueurUn.setAttackObject(Weapon);
             Shield Shield = new Shield(6, "Bouclier Rond");
             joueurUn.setDefenseObject(Shield);
         } else {
             joueurUn = new Wizard(nomJoueur);
-//            Sort Sort = new Flash();
-//            joueurUn.setAttackObject(Sort);
             Philter Philter = new Philter(8, "Voile du couard");
             joueurUn.setDefenseObject(Philter);
         }

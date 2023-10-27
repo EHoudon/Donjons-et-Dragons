@@ -12,19 +12,23 @@ public abstract class Sort extends OffensifEquipement implements Case {
     }
 
     @Override
-    public void interaction(Personnage joueur) {
+    public int interaction(Personnage joueur) {
         if (joueur instanceof Wizard) {
             Scanner newCharacter = new Scanner(System.in);
             System.out.print("Voulez vous prendre l'arme? [y/n]");
             if (newCharacter.nextLine().equals("y")){
                 joueur.setAttackObject(this);
+                return 1;
             } else {
                 System.out.println("Pas prendre l'arme");
+                return 2;
             }
 
         } else {
-            System.err.println("Vous ne pouvez pas prendre cet objet, tu es un Guerrier Harry, heuuu  " + joueur.getName());
+            System.err.println("Vous ne pouvez pas prendre cet objet, tu es un Guerrier " + joueur.getName());
+            return 2;
         }
+
     }
 
 }

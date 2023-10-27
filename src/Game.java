@@ -1,6 +1,7 @@
 import Board.Board;
 import Personnage.*;
 import Exeptions.PersonnageHorsPlateauException;
+import Board.*;
 
 import java.sql.SQLOutput;
 import java.util.Scanner;
@@ -57,8 +58,23 @@ public class Game {
             System.out.println("fin de partie, vous avez gagné !!");
             return;
         }
+
         myBoard.getTypeCase(gameJoueur.getPlayerPosition());
-        myBoard.getAl().get(gameJoueur.getPlayerPosition()).interaction(gameJoueur);
+        int resultInteraction = myBoard.getAl().get(gameJoueur.getPlayerPosition()).interaction(gameJoueur);
+
+        switch (resultInteraction) {
+            case 1:
+                Casevide casevide = new Casevide();
+                myBoard.getAl().set(gameJoueur.getPlayerPosition(), casevide);
+                break;
+            case 2:
+                System.out.println("pas d'intéraction");
+                break;
+            case 3:
+                myBoard.getAl().get(gameJoueur.getPlayerPosition()).interaction(gameJoueur);
+                break;
+        }
+        myBoard.getTypeCase(gameJoueur.getPlayerPosition());
     }
 
     private void finDePartie() {

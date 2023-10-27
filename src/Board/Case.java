@@ -1,9 +1,12 @@
 package Board;
 import Personnage.*;
 
-public interface Case {
+import java.util.ArrayList;
 
-void interaction(Personnage joueur);
+public interface Case {
+    int  interaction(Personnage joueur);
+
 
 }
+
 

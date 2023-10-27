@@ -1,6 +1,7 @@
 package Board;
 
 import Personnage.*;
+
 public class Casevide implements Case {
 
     @Override
@@ -9,8 +10,8 @@ public class Casevide implements Case {
     }
 
     @Override
-    public void interaction(Personnage joueur) {
-
+    public int interaction(Personnage joueur) {
+        return 1;
 
     }
 }
