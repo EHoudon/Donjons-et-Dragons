@@ -1,23 +1,16 @@
 package Personnage;
 
+import Offensif.OffensifEquipement;
+import Offensif.Weapon;
+
 public class Warrior extends Personnage {
     private String type = "Warrior";
-    private Object Weapon;
+
+    private OffensifEquipement Weapon;
 
     public Warrior(String name) {
-        super(name, 5, 5);
-//        type = "Warrior";
-//        this.Weapon = new Weapon(5,"Hache");
-    }
+        super(name, 5, 5, "Weapon");
 
-
-
-    public Object getWeapon() {
-        return Weapon;
-    }
-
-    public void setWeapon(Object weapon) {
-        Weapon = weapon;
     }
 
     public String getType() {
@@ -27,5 +20,6 @@ public class Warrior extends Personnage {
     public void setType(String type) {
         this.type = type;
     }
+
 
 }

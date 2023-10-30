@@ -1,19 +1,15 @@
 package Personnage;
 
+import Offensif.OffensifEquipement;
+import Offensif.Sort;
+
 public class Wizard extends Personnage {
     private String type = "Wizard";
-private Object Sort;
+
+    private OffensifEquipement Sort;
+
     public Wizard(String name){
-        super(name,3,8);
-
-    }
-
-    public Object getSort() {
-        return Sort;
-    }
-
-    public void setSort(Object sort) {
-        Sort = sort;
+        super(name,3,8,"Sort");
     }
 
     @Override

@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 import Exeptions.PersonnageHorsPlateauException;
+import Offensif.OffensifEquipement;
+import Offensif.Sort;
+import Offensif.Weapon;
 import Personnage.Personnage;
 import Personnage.Warrior;
 import Personnage.Wizard;

@@ -26,6 +26,7 @@ public class Game {
 
     private void debutPartie() {
         gameJoueur.setPlayerPosition(1);
+        gameJoueur.setTotalAttack(gameJoueur.getAttackStrength());
         System.out.println("Position de départ : " + gameJoueur.getPlayerPosition());
     }
 
@@ -58,7 +59,10 @@ public class Game {
             System.out.println("fin de partie, vous avez gagné !!");
             return;
         }
+        resultInteraction();
+    }
 
+    private void resultInteraction(){
         myBoard.getTypeCase(gameJoueur.getPlayerPosition());
         int resultInteraction = myBoard.getAl().get(gameJoueur.getPlayerPosition()).interaction(gameJoueur);
 
@@ -71,8 +75,11 @@ public class Game {
                 System.out.println("pas d'intéraction");
                 break;
             case 3:
-                myBoard.getAl().get(gameJoueur.getPlayerPosition()).interaction(gameJoueur);
+                resultInteraction();
                 break;
+            case 4:
+                System.out.println("Vous etes mort!!!");
+                finDePartie();
         }
         myBoard.getTypeCase(gameJoueur.getPlayerPosition());
     }

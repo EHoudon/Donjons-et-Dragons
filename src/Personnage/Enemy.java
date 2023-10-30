@@ -1,6 +1,8 @@
 package Personnage;
 
 import Board.Case;
+import Exeptions.PersonnageHorsPlateauException;
+import Offensif.OffensifEquipement;
 
 import java.awt.*;
 import java.util.Scanner;
@@ -8,7 +10,7 @@ import java.util.Scanner;
 public abstract class Enemy extends Personnage implements Case {
     //Personnage joueur;
     public Enemy(String name, int life, int attackStrength) {
-        super(name, life, attackStrength);
+        super(name, life, attackStrength, null);
     }
 
     @Override
@@ -31,7 +33,7 @@ public abstract class Enemy extends Personnage implements Case {
     public int interaction(Personnage joueur) {
         System.out.println("Horreur! un " + this.getName());
         Scanner tour = new Scanner(System.in);
-        while (this.getLife() > 0 && joueur.getLife() > 0) {
+        while (this.getLife() > 0) {
             System.out.println(("Attaquer (1)  Fuir! (2)"));
             String choice = tour.nextLine();
             switch (choice) {
@@ -39,6 +41,9 @@ public abstract class Enemy extends Personnage implements Case {
                     tourCombatAttaqueJoueur(joueur);
                     if (this.getLife() > 0) {
                         tourCombatAttaqueEnemy(joueur);
+                        if (controleLifePlayer(joueur)) {
+                            return 4;
+                        }
                     } else {
                         System.out.println("Vous avez vaincu le " + this.getName());
                         return 1;
@@ -59,15 +64,14 @@ public abstract class Enemy extends Personnage implements Case {
                     System.out.println("veuillez choisir (1) ou (2)");
                     interaction(joueur);
             }
-
         }
         return 2;
     }
 
     public void tourCombatAttaqueJoueur(Personnage joueur) {
         System.out.println("vie du " + this.getName() + " : " + this.getLife());
-        System.out.println("Ma puissance d'attaque: " + joueur.getAttackStrength());
-        this.setLife(this.getLife() - joueur.getAttackStrength());
+        System.out.println("Ma puissance d'attaque: " + joueur.getTotalAttack());
+        this.setLife(this.getLife() - joueur.getTotalAttack());
         if (this.getLife() <= 0) {
             this.setLife(0);
         }
@@ -81,5 +85,8 @@ public abstract class Enemy extends Personnage implements Case {
         System.out.println("Maj Ma vie: " + joueur.getLife());
     }
 
+    public boolean controleLifePlayer(Personnage joueur) {
+        return joueur.getLife() <= 0;
+    }
 
 }

@@ -2,6 +2,7 @@ package Personnage;
 
 import Defensif.DefensifEquipement;
 import Offensif.OffensifEquipement;
+import Offensif.Weapon;
 
 public abstract class Personnage {
     private String name;
@@ -9,25 +10,23 @@ public abstract class Personnage {
     private int life;
     private int MaxLife = 10;
     private int attackStrength;
+    private int totalAttack;
     private int playerPosition;
     private OffensifEquipement attackObject;
+    private String TypeWeapon;
     private DefensifEquipement defenseObject;
 
     public Personnage() {
     }
-
     public Personnage(String name) {
         this.name = name;
     }
 
-
-
-
-    public Personnage(String name, int life, int attackStrength) {
+    public Personnage(String name, int life, int attackStrength, String typeWeapon) {
         this.name = name;
         this.life = life;
         this.attackStrength = attackStrength;
-//        this.attackObject = new OffensifEquipement(TypeWeapon, int attackLevel, String name);
+        this.TypeWeapon = typeWeapon;
     }
     public abstract String getType();
 
@@ -39,11 +38,23 @@ public abstract class Personnage {
                 "type: " + getType() + '\n' +
                 "life: " + life + '\n' +
                 "attackStrength: " + attackStrength + '\n' +
+                "totalAttack: " + totalAttack + '\n' +
                  attackObject + '\n' +
                  defenseObject+ '\n' ;
     }
 
-
+    public int getTotalAttack() {
+        return totalAttack;
+    }
+    public void setTotalAttack(int totalAttack) {
+        this.totalAttack = totalAttack;
+    }
+    public String getTypeWeapon() {
+        return TypeWeapon;
+    }
+    public void setTypeWeapon(String typeWeapon) {
+        TypeWeapon = typeWeapon;
+    }
     public OffensifEquipement getAttackObject() {
         return attackObject;
     }
@@ -86,4 +97,5 @@ public abstract class Personnage {
     public void setMaxLife(int maxLife) {
         MaxLife = maxLife;
     }
+
 }
