@@ -1,5 +1,6 @@
 package Personnage;
 
+import Offensif.EnumTypeWeapon;
 import Offensif.OffensifEquipement;
 import Offensif.Weapon;
 

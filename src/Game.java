@@ -18,7 +18,7 @@ public class Game {
 
     public void start() {
         debutPartie();
-        while (gameJoueur.getPlayerPosition() < 64) {
+        while (gameJoueur.getPlayerPosition() < myBoard.getSize()) {
             choixJoueur(getGameJoueur());
         }
         finDePartie();
@@ -82,6 +82,8 @@ public class Game {
                 finDePartie();
         }
         myBoard.getTypeCase(gameJoueur.getPlayerPosition());
+        DataBase dataBase = new DataBase();
+        dataBase.UpdateHero(gameJoueur);
     }
 
     private void finDePartie() {

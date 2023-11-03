@@ -20,7 +20,7 @@ public abstract class OffensifEquipement implements Case {
 
     @Override
     public int interaction(Personnage joueur) {
-        if (joueur.getTypeWeapon().equals(this.TypeWeapon)) {
+        if (joueur.TypeWeapon.equals(this.TypeWeapon)) {
             Scanner tour = new Scanner(System.in);
             System.out.print("Voulez vous prendre l'arme? [y/n]");
             String choice = tour.nextLine();

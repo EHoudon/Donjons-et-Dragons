@@ -39,7 +39,9 @@ public class Board {
     public void getTypeCase(int position) {
         System.out.println("Case " + position + " = " + al.get(position));
     }
-
+public int getSize(){
+        return al.size();
+}
     public void setAl(ArrayList<Case> al) {
         this.al = al;
     }

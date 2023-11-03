@@ -1,15 +1,10 @@
-import java.util.Scanner;
-
-import Exeptions.PersonnageHorsPlateauException;
-import Offensif.OffensifEquipement;
-import Offensif.Sort;
-import Offensif.Weapon;
+import Defensif.Philter;
+import Defensif.Shield;
 import Personnage.Personnage;
 import Personnage.Warrior;
 import Personnage.Wizard;
-import Defensif.Philter;
-import Defensif.Shield;
 
+import java.util.Scanner;
 
 public class Menu {
 
@@ -71,17 +66,22 @@ public class Menu {
                 typeJoueur = newCharacter.nextLine();
             }
         }
+
         Personnage joueurUn;
+        DataBase dataBase = new DataBase();
         if (typeJoueur.equals("Warrior")) {
             joueurUn = new Warrior(nomJoueur);
+
             Shield Shield = new Shield(6, "Bouclier Rond");
             joueurUn.setDefenseObject(Shield);
         } else {
             joueurUn = new Wizard(nomJoueur);
+
             Philter Philter = new Philter(8, "Voile du couard");
             joueurUn.setDefenseObject(Philter);
         }
-
+        dataBase.CreateHero(joueurUn);
+//        dataBase.ModifyLifeHero();
         System.out.println(joueurUn);
 
         return joueurUn;

@@ -13,7 +13,7 @@ public abstract class Personnage {
     private int totalAttack;
     private int playerPosition;
     private OffensifEquipement attackObject;
-    private String TypeWeapon;
+    public String TypeWeapon;
     private DefensifEquipement defenseObject;
 
     public Personnage() {
@@ -27,6 +27,7 @@ public abstract class Personnage {
         this.life = life;
         this.attackStrength = attackStrength;
         this.TypeWeapon = typeWeapon;
+
     }
     public abstract String getType();
 
@@ -48,12 +49,6 @@ public abstract class Personnage {
     }
     public void setTotalAttack(int totalAttack) {
         this.totalAttack = totalAttack;
-    }
-    public String getTypeWeapon() {
-        return TypeWeapon;
-    }
-    public void setTypeWeapon(String typeWeapon) {
-        TypeWeapon = typeWeapon;
     }
     public OffensifEquipement getAttackObject() {
         return attackObject;
