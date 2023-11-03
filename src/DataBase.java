@@ -31,13 +31,13 @@ public class DataBase {
             pstmt.setString(2, joueur.getName());
             pstmt.setInt(3, joueur.getLife());
             pstmt.setInt(4, joueur.getAttackStrength());
-            pstmt.setInt(5,joueur.getAttackStrength());
-            pstmt.setString(6,joueur.TypeWeapon);
+            pstmt.setInt(5, joueur.getAttackStrength());
+            pstmt.setString(6, joueur.TypeWeapon);
 
             int i = pstmt.executeUpdate();
             System.out.println(i + " records inserted");
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -55,12 +55,50 @@ public class DataBase {
             pstmt.setString(3, NomJoueur);
 
             pstmt.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
 
     }
-}
+
+    public void DeleteHero(Personnage joueur) {
+        String NomJoueur = joueur.getName();
+        try {
+            PreparedStatement pstmt = mydb.prepareStatement
+                    ("delete from hero WHERE Nom = ?");
+            pstmt.setString(1, NomJoueur);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+        public void ListPlayer () {
+            try {
+                Statement stmt = mydb.createStatement();
+                //Query to retrieve records
+                String query = "Select * from hero";
+                //Executing the query
+                ResultSet rs = stmt.executeQuery(query);
+                System.out.println("Mes Personnages: ");
+                //Moving the cursor from default position to 1st row.
+               while(rs.next()){
+                    //Current record details.
+                    System.out.print("id: " + rs.getInt("id") + ", ");
+                    System.out.print("Type: " + rs.getString("Type") + ", ");
+                    System.out.print("Name: " + rs.getString("Nom") + ", ");
+                    System.out.print("Vie: " + rs.getInt("NiveauVie") + ", ");
+                    System.out.print("Attaque: " + rs.getInt("TotalAttack") + ", ");
+                    System.out.println();
+                }
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+
+
+    }
 
 
 

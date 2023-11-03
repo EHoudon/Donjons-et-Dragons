@@ -16,12 +16,12 @@ public class Game {
         gameJoueur = joueur;
     }
 
-    public void start() {
+    public void start(DataBase db) {
         debutPartie();
         while (gameJoueur.getPlayerPosition() < myBoard.getSize()) {
-            choixJoueur(getGameJoueur());
+            choixJoueur(getGameJoueur(),db);
         }
-        finDePartie();
+        finDePartie(db);
     }
 
     private void debutPartie() {
@@ -34,22 +34,22 @@ public class Game {
         return gameJoueur;
     }
 
-    private void choixJoueur(Personnage joueur) {
+    private void choixJoueur(Personnage joueur, DataBase db) {
         Scanner tour = new Scanner(System.in);
         System.out.println(("Avancer (1)  Mes Stats (2)"));
         String choice = tour.nextLine();
         if (choice.equals("1")) {
-            tourDeJeu(joueur);
+            tourDeJeu(joueur,db);
         } else if (choice.equals("2")) {
             System.out.println(joueur);
-            choixJoueur(joueur);
+            choixJoueur(joueur,db);
         } else {
             System.out.println("veuillez choisir (1) ou (2)");
-            choixJoueur(joueur);
+            choixJoueur(joueur,db);
         }
     }
 
-    private void tourDeJeu(Personnage joueur) {
+    private void tourDeJeu(Personnage joueur, DataBase db) {
         throwDice();
         System.out.println("lancer de dé : " + dice);
         joueur.setPlayerPosition(gameJoueur.getPlayerPosition() + dice);
@@ -59,10 +59,11 @@ public class Game {
             System.out.println("fin de partie, vous avez gagné !!");
             return;
         }
-        resultInteraction();
+
+        resultInteraction(db);
     }
 
-    private void resultInteraction(){
+    private void resultInteraction(DataBase db){
         myBoard.getTypeCase(gameJoueur.getPlayerPosition());
         int resultInteraction = myBoard.getAl().get(gameJoueur.getPlayerPosition()).interaction(gameJoueur);
 
@@ -75,32 +76,31 @@ public class Game {
                 System.out.println("pas d'intéraction");
                 break;
             case 3:
-                resultInteraction();
+                resultInteraction(db);
                 break;
             case 4:
                 System.out.println("Vous etes mort!!!");
-                finDePartie();
+                finDePartie(db);
         }
         myBoard.getTypeCase(gameJoueur.getPlayerPosition());
-        DataBase dataBase = new DataBase();
-        dataBase.UpdateHero(gameJoueur);
+        db.UpdateHero(gameJoueur);
     }
 
-    private void finDePartie() {
+    private void finDePartie(DataBase db) {
         System.out.println("retour au menu (1) Statistiques de la partie (2) Quitter le jeu (3)");
         Scanner tour = new Scanner(System.in);
         String choice = tour.nextLine();
         if (choice.equals("1")) {
             Menu menu = new Menu();
-            menu.displayMenu();
+            menu.displayMenu(db);
         } else if (choice.equals("2")) {
             System.out.println("Not implemented, veuillez consulter la road map");
-            finDePartie();
+            finDePartie(db);
         } else if (choice.equals("3")) {
             System.out.println("Chao!");
         } else {
             System.out.println("veuillez choisir (1), (2) ou (3)");
-            finDePartie();
+            finDePartie(db);
         }
     }
 

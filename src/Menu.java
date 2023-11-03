@@ -8,28 +8,39 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public void displayMenu() {
+    public Menu (){
+        DataBase dataBase = new DataBase();
+        displayMenu(dataBase);
+    }
+
+    public void displayMenu(DataBase db) {
         Scanner newMenu = new Scanner(System.in);
         System.out.println("»»——☠——« DONJONS & DRAGONS »——☠——««");
         System.out.println("1. New Game");
-        System.out.println("2. Exit Game");
-        System.out.println(("3. Crédits"));
+        System.out.println("2. Voir mes Personnages");
+        System.out.println("3. Exit Game");
+        System.out.println(("4. Crédits"));
         String choice = newMenu.nextLine();
 
         if (choice.equals("1")) {
-            Personnage joueur = newPlayer();
+            Personnage joueur = newPlayer(db);
             Game game = new Game(joueur);
-                game.start();
+                game.start(db);
         }
-        if (choice.equals("2")) {
-            System.out.println("Chao!");
+        if (choice.equals("2")){
+            db.ListPlayer();
+            System.out.println(" ");
+            displayMenu(db);
         }
         if (choice.equals("3")) {
+            System.out.println("Chao!");
+        }
+        if (choice.equals("4")) {
             System.out.println("Created By EH ©");
             System.out.println("retour au menu? yes(y) no(n)");
             String retourMenu = newMenu.nextLine();
             if (retourMenu.equals("y")) {
-                displayMenu();
+                displayMenu(db);
             }
             if (retourMenu.equals("n")) {
                 System.out.println("Chao!");
@@ -37,7 +48,7 @@ public class Menu {
         }
     }
 
-    public Personnage newPlayer() {
+    public Personnage newPlayer(DataBase db) {
 //        System.out.println();
         Scanner newCharacter = new Scanner(System.in);
 
@@ -68,7 +79,7 @@ public class Menu {
         }
 
         Personnage joueurUn;
-        DataBase dataBase = new DataBase();
+
         if (typeJoueur.equals("Warrior")) {
             joueurUn = new Warrior(nomJoueur);
 
@@ -80,11 +91,15 @@ public class Menu {
             Philter Philter = new Philter(8, "Voile du couard");
             joueurUn.setDefenseObject(Philter);
         }
-        dataBase.CreateHero(joueurUn);
+        db.CreateHero(joueurUn);
 //        dataBase.ModifyLifeHero();
         System.out.println(joueurUn);
 
         return joueurUn;
     }
+
+//    public void ListPlayer (DataBase db) {
+//
+//    }
 }
 
