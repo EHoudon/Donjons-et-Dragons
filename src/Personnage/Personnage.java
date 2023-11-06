@@ -22,6 +22,13 @@ public abstract class Personnage {
         this.name = name;
     }
 
+    /**
+     *
+     * @param name
+     * @param life
+     * @param attackStrength
+     * @param typeWeapon
+     */
     public Personnage(String name, int life, int attackStrength, String typeWeapon) {
         this.name = name;
         this.life = life;
@@ -31,7 +38,10 @@ public abstract class Personnage {
     }
     public abstract String getType();
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "◇─◇──◇────◇ INFOS JOUEUR ◇─────◇──◇─◇" + '\n' +

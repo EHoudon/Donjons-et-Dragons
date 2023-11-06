@@ -1,6 +1,7 @@
 import Personnage.Personnage;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class DataBase {
 
@@ -61,12 +62,16 @@ public class DataBase {
 
     }
 
-    public void DeleteHero(Personnage joueur) {
-        String NomJoueur = joueur.getName();
+    public void DeleteHero() {
+        Scanner newMenu = new Scanner(System.in);
+        System.out.println("Quel personnage voulez vous supprimer?");
+        System.out.println("Ecrire son ID: ");
+        String IdCharacter = newMenu.nextLine();
+
         try {
             PreparedStatement pstmt = mydb.prepareStatement
-                    ("delete from hero WHERE Nom = ?");
-            pstmt.setString(1, NomJoueur);
+                    ("delete from hero WHERE id = ?");
+            pstmt.setString(1, IdCharacter);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -74,31 +79,31 @@ public class DataBase {
         }
     }
 
-        public void ListPlayer () {
-            try {
-                Statement stmt = mydb.createStatement();
-                //Query to retrieve records
-                String query = "Select * from hero";
-                //Executing the query
-                ResultSet rs = stmt.executeQuery(query);
-                System.out.println("Mes Personnages: ");
-                //Moving the cursor from default position to 1st row.
-               while(rs.next()){
-                    //Current record details.
-                    System.out.print("id: " + rs.getInt("id") + ", ");
-                    System.out.print("Type: " + rs.getString("Type") + ", ");
-                    System.out.print("Name: " + rs.getString("Nom") + ", ");
-                    System.out.print("Vie: " + rs.getInt("NiveauVie") + ", ");
-                    System.out.print("Attaque: " + rs.getInt("TotalAttack") + ", ");
-                    System.out.println();
-                }
-            } catch (SQLException e) {
-                System.out.println(e);
+    public void ListPlayer() {
+        try {
+            Statement stmt = mydb.createStatement();
+            //Query to retrieve records
+            String query = "Select * from hero";
+            //Executing the query
+            ResultSet rs = stmt.executeQuery(query);
+            System.out.println("Mes Personnages: ");
+            //Moving the cursor from default position to 1st row.
+            while (rs.next()) {
+                //Current record details.
+                System.out.print("id: " + rs.getInt("id") + ", ");
+                System.out.print("Type: " + rs.getString("Type") + ", ");
+                System.out.print("Name: " + rs.getString("Nom") + ", ");
+                System.out.print("Vie: " + rs.getInt("NiveauVie") + ", ");
+                System.out.print("Attaque: " + rs.getInt("TotalAttack") + ". ");
+                System.out.println();
             }
+        } catch (SQLException e) {
+            System.out.println(e);
         }
-
-
     }
+
+
+}
 
 
 

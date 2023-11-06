@@ -4,7 +4,7 @@ import Board.Case;
 import Exeptions.PersonnageHorsPlateauException;
 import Offensif.OffensifEquipement;
 
-import java.awt.*;
+
 import java.util.Scanner;
 
 public abstract class Enemy extends Personnage implements Case {

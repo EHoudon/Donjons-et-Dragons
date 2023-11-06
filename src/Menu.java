@@ -25,11 +25,13 @@ public class Menu {
         if (choice.equals("1")) {
             Personnage joueur = newPlayer(db);
             Game game = new Game(joueur);
-                game.start(db);
+            game.start(db);
         }
         if (choice.equals("2")){
             db.ListPlayer();
             System.out.println(" ");
+            displayMenuListCharacter(db);
+            db.DeleteHero();
             displayMenu(db);
         }
         if (choice.equals("3")) {
@@ -92,14 +94,28 @@ public class Menu {
             joueurUn.setDefenseObject(Philter);
         }
         db.CreateHero(joueurUn);
-//        dataBase.ModifyLifeHero();
         System.out.println(joueurUn);
-
         return joueurUn;
     }
 
-//    public void ListPlayer (DataBase db) {
-//
-//    }
+    public void displayMenuListCharacter(DataBase db){
+        Scanner newMenu = new Scanner(System.in);
+
+        System.out.println("1. Retour Menu");
+        System.out.println("2. Supprimer un personnage");
+        String choice = newMenu.nextLine();
+
+        if (choice.equals("1")){
+            displayMenu(db);
+        }
+        if (choice.equals("2")){
+            db.DeleteHero();
+            db.ListPlayer();
+            displayMenuListCharacter(db);
+        }
+        else {
+            displayMenuListCharacter(db);
+        }
+    }
 }
 

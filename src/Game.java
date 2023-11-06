@@ -11,11 +11,21 @@ public class Game {
     private final Personnage gameJoueur;
     private final Board myBoard;
 
+    /**
+     *
+     * @param joueur
+     */
     public Game(Personnage joueur) {
         myBoard = new Board();
         gameJoueur = joueur;
     }
 
+    /**
+     *
+     * Méthode qui effectue le déroulé de la partie
+     * Début, milieu et fin de partie
+     * @param db pour mettre à jour la BDD en cours de partie
+     */
     public void start(DataBase db) {
         debutPartie();
         while (gameJoueur.getPlayerPosition() < myBoard.getSize()) {
@@ -24,16 +34,22 @@ public class Game {
         finDePartie(db);
     }
 
+    /**
+     * Défini la position et l'attaque de départ du personnage
+     */
     private void debutPartie() {
         gameJoueur.setPlayerPosition(1);
         gameJoueur.setTotalAttack(gameJoueur.getAttackStrength());
         System.out.println("Position de départ : " + gameJoueur.getPlayerPosition());
     }
 
-    public Personnage getGameJoueur() {
-        return gameJoueur;
-    }
 
+
+    /**
+     * Donne le choix a l'utilisateur pour savoir quelle action il veux effectuer
+     * @param joueur c'est le personnage de la partie
+     * @param db pour mettre à jour la BDD en cours de partie
+     */
     private void choixJoueur(Personnage joueur, DataBase db) {
         Scanner tour = new Scanner(System.in);
         System.out.println(("Avancer (1)  Mes Stats (2)"));
@@ -113,6 +129,9 @@ public class Game {
             throw new PersonnageHorsPlateauException();
     }
 
+    public Personnage getGameJoueur() {
+        return gameJoueur;
+    }
 }
 
 
